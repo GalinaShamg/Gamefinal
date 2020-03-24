@@ -5,45 +5,63 @@ import java.util.Collections;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-public class DoGame{
-    int guessNum;
-    int num;
-       Scanner scanner = new Scanner(System.in);
+public class DoGame {
+
     public static void doGame1() {
-       int num=5;
         Scanner scanner = new Scanner(System.in);
+        int num = 5;
         System.out.println("Игра Угадай число. Отгадайте, какое число от 0 до 100 загадал компьютер");
-        int guessNum = scanner.nextInt();
-        while (!DoGame.checkguessNum(guessNum)) {
-compareNum(guessNum, num);
-        }
-    }
-        public static boolean compareNum(int guessNum, int num){
-            Scanner scanner = new Scanner(System.in);
-            if (guessNum > num) {
-                System.out.println("Загаданное число меньше вашего, попробуйте еще раз ");
-                guessNum = scanner.nextInt();
-                return false;
-            } else if (guessNum < num) {
-                System.out.println("Загаданное число больше вашего, попробуйте еще раз ");
-                guessNum = scanner.nextInt();
-                return false;
+            int guessNum = scanner.nextInt();
 
-            } else {
-                System.out.println("Вы угадали. Сыграем в следующую игру. Если да? введите цифру 2 ");
-           return true;
+            while (guessNum != num) {
+                if (guessNum > num) {
+                    System.out.println("Ваше число больше задуманного. Попробуйте еще");
+                    guessNum = scanner.nextInt();
+                }
+                if (guessNum < num) {
+                    System.out.println("Ваше число меньше задуманного. Попробуйте еще");
+                    guessNum = scanner.nextInt();
+                }
             }
+
+            System.out.println("Здорово! Сыграем еще? Введите на клавиатуре или \"угадать число\" или \"загадать число\"");
+            scanner.nextLine();
+            String gameChoice11 = scanner.nextLine();
+            String dgame111 = "угадать число";
+            String dgame222 = "загадать число";
+            Game.regChoice(gameChoice11, dgame111, dgame222);
         }
 
-        public static boolean checkguessNum ( int guessNum){
-            try {
-                Scanner scanner = new Scanner(System.in);
-                guessNum = scanner.nextInt();
-            } catch (InputMismatchException e) {
-                System.out.println("Вы ввели что-то не то, введите число");
-                return false;
-            }
-            return true;
+    public static void doGame2() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Игра \"Загадать число\". Загадайте число от 0 до 100. Когда загадаете, напечатайте \"загадал\"");
+        String yes = scanner.nextLine();
+        String yes1 = "загадал";
+        while(!yes.equals(yes1)){
+            System.out.println("Когда загадаете, напечатайте \"загадал\"");
+            yes = scanner.nextLine();
         }
-    }
+        if (yes.equals(yes1)) {
+            System.out.println("Хорошо!");
+            int num = 0;
+            System.out.println(num + " - если число большое, введите слово \"больше\", если вы загадали это число, введите слово \"правильно\"");
+            String answer = scanner.nextLine();
+            String more = "больше";
+            String right = "правильно";
+            while (!answer.equals(right)) {
+                num += 1;
+                System.out.println(num + " - если число большое, введите слово \"больше\", если вы загадали это число, введите слово \"правильно\"");
+                answer = scanner.nextLine();
+            }
+            System.out.println("Здорово! Сыграем еще? Введите на клавиатуре или \"угадать число\" или \"загадать число\"");
+        }
+            String gameChoice = scanner.nextLine();
+            String dgame11 = "угадать число";
+            String dgame22 = "загадать число";
+            Game.regChoice(gameChoice, dgame11, dgame22);
+   }
+}
+
+
+
 

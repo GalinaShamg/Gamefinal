@@ -15,21 +15,37 @@ public class Game {
             userName = UserReg.regName();
             User user = new User(userName);
         }
-        System.out.println("Давайте поиграем. Выберите игру. Введите на клавиатуре число 1 или 2");
-        int gameChoice = 0;
-        while (!GameChoice.checkGame(gameChoice)){};
 
-        System.out.println("Отлично, начинаем!");
-
-        if (gameChoice == 1) {
-            DoGame.doGame1();
+        System.out.println("Давайте поиграем. Выберите игру. Введите на клавиатуре или \"угадать число\" или \"загадать число\"");
+        String dgame1 = "угадать число";
+        String dgame2 = "загадать число";
+        String gameChoice = scanner.nextLine();
+        while(!(gameChoice.equals(dgame1) || gameChoice.equals(dgame2))){
+            System.out.println("Введите на клавиатуре или \"угадать число\" или \"загадать число\"");
+            gameChoice = scanner.nextLine();
         }
-        if (gameChoice == 2) {
-            System.out.println("Пора делать другую игру");
 
-        }
+regChoice(gameChoice, dgame1, dgame2);
+
+
         System.out.println("Отлично поиграли. До свидания!");
     }
+    public static void regChoice(String gameChoice, String dgame1, String dgame2){
+        if (gameChoice.equals(dgame1)) {
+            DoGame.doGame1();
+        }
+        if (gameChoice.equals(dgame2)) {
+            DoGame.doGame2();
+        }
+    }
+    public static void doExit(){
+        Scanner scanner = new Scanner(System.in);
+        while (scanner.nextLine().contains("выйти")) {
+            System.out.println("До свидания");
+            break;
+        }
+    }
+
 }
 
 
