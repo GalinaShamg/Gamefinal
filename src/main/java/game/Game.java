@@ -5,7 +5,7 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 import java.util.regex.Pattern;
 
-public class Game {
+public class Game{
 
     public static void main(String[] args) {
         System.out.println("Здравствуйте, как вас зовут?");
@@ -21,6 +21,10 @@ public class Game {
         String dgame2 = "загадать число";
         String gameChoice = scanner.nextLine();
         while(!(gameChoice.equals(dgame1) || gameChoice.equals(dgame2))){
+            if (gameChoice.equals("выйти")){
+                System.out.println("До свидания");
+                System.exit(0);
+            }
             System.out.println("Введите на клавиатуре или \"угадать число\" или \"загадать число\"");
             gameChoice = scanner.nextLine();
         }
@@ -38,14 +42,14 @@ regChoice(gameChoice, dgame1, dgame2);
             DoGame.doGame2();
         }
     }
-    public static void doExit(){
+
+ /*   public void exit(){
         Scanner scanner = new Scanner(System.in);
         while (scanner.nextLine().contains("выйти")) {
             System.out.println("До свидания");
             break;
         }
-    }
-
+    } */
 }
 
 

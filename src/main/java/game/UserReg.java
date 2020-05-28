@@ -3,6 +3,8 @@ package game;
 import java.util.Scanner;
 import java.util.regex.Pattern;
 
+
+
 public class UserReg {
     public static boolean checkName(String name){
         if(name.equals("")){
@@ -15,6 +17,10 @@ public class UserReg {
             System.out.println("Введите имя без цифр! ");
             return false;
         }
+        else if (name.contains("выйти")){
+            System.exit(0);
+            return true;
+            }
         else {
 
           System.out.println("Отлично! Здравствуйте "+name.substring(0,1).toUpperCase()+ removeCharAt(name, 0));
